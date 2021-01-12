@@ -26,10 +26,14 @@ client.on('message', async msg => {
     const args = msg.content.slice(process.env.PREFIX.length).trim().split(" ");
     const command = args.shift().toLowerCase();
 
-    if (!client.commands.has(command)) return;
+    if (!client.commands.has(command)) {
+        msg.react('❓');
+        return;
+    }
 
     try {
         client.commands.get(command).execute(msg, args);
+        console.log(msg, args);
     } catch (err) {
         console.log(err);
         msg.reply('There was an error trying to execute that command.');
