@@ -5,7 +5,7 @@ module.exports = {
     description: 'GIFs from Giphy. Pronounced GIF, not GIF.',
     async execute(msg, args) {
         let keywords;
-        if (args.length > 1) {
+        if (args.length > 0) {
             keywords = args.join("+");
         } else {
             keywords = "cat";
