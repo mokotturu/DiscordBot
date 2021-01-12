@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 
 module.exports = {
     name: 'gif',
-    description: 'GIFs from Giphy. Pronounced GIF, not GIF.',
+    description: 'GIFs from GIPHY. Pronounced GIF, not GIF.',
     async execute(msg, args) {
         let keywords;
         if (args.length > 0) {
