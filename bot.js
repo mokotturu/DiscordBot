@@ -33,7 +33,6 @@ client.on('message', async msg => {
 
     try {
         client.commands.get(command).execute(msg, args);
-        console.log(msg, args);
     } catch (err) {
         console.log(err);
         msg.reply('There was an error trying to execute that command.');
