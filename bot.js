@@ -1,6 +1,15 @@
-const dotenv = require('dotenv');
-dotenv.config({ path: 'config.env' });
+const express = require('express');
 const fs = require('fs');
+const bodyParser = require('body-parser');
+const connectDB = require('./config/db.js');
+const dotenv = require('dotenv');
+dotenv.config({ path: './config/config.env' });
+const app = express();
+
+connectDB();
+
+app.use(bodyParser.urlencoded({ extended: true, limit: '50MB', parameterLimit: 1000000000000000}));
+app.use(bodyParser.json({ extended: true, limit: '50MB' }));
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
