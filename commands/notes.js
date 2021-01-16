@@ -1,11 +1,11 @@
 const Note = require('../models/Note');
 
 module.exports = {
-    name: 'note',
+    name: 'notes',
     description: 'Create a note',
     async execute(msg, args) {
         if (args.length == 0) {
-            msg.reply("use:\n - !note show\n - !note add <content>\n - !note rm <id>");
+            msg.reply("use:\n - !notes show\n - !notes add <content>\n - !notes rm <id>");
             return;
         } else if (args[0] == "add") {
             args.shift();
@@ -55,7 +55,7 @@ module.exports = {
                 }
             });
         } else {
-            msg.reply("sorry, argument not found. Use:\n - !note show\n - !note add <content>\n - !note rm <id>")
+            msg.reply("sorry, argument not found. Use:\n - !notes show\n - !notes add <content>\n - !notes rm <id>")
         }
     }
 }
