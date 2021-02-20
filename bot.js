@@ -26,7 +26,7 @@ client.login(process.env.BOT_TOKEN);
 
 client.once('ready', () => {
     console.log('Bot logged in');
-    client.user.setActivity('never gonne give you up', { type: 'PLAYING'});
+    client.user.setActivity('never gonna give you up', { type: 'PLAYING' });
 });
 
 client.on('message', async msg => {
