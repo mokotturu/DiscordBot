@@ -17,33 +17,39 @@ client.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
+console.log(process.env.MONGO_URI)
+
 for (const file of commandFiles) {
-    const command = require(`./commands/${file}`);
-    client.commands.set(command.name, command);
+	const command = require(`./commands/${file}`);
+	client.commands.set(command.name, command);
 }
 
 client.login(process.env.BOT_TOKEN);
 
 client.once('ready', () => {
-    console.log('Bot logged in');
-    client.user.setActivity('never gonna give you up', { type: 'PLAYING' });
+	console.log('Bot logged in');
+	client.user.setActivity('never gonna give you up', { type: 'PLAYING' });
 });
 
 client.on('message', async msg => {
-    if (!msg.content.startsWith(process.env.PREFIX) || msg.author.bot) return;
+	if (!msg.content.startsWith(process.env.PREFIX) || msg.author.bot) return;
 
-    const args = msg.content.slice(process.env.PREFIX.length).trim().split(" ");
-    const command = args.shift().toLowerCase();
+	const args = msg.content.slice(process.env.PREFIX.length).trim().split(" ");
+	const command = args.shift().toLowerCase();
 
-    if (!client.commands.has(command)) {
-        msg.react('❓');
-        return;
-    }
+	if (!client.commands.has(command)) {
+		msg.react('❓');
+		return;
+	}
 
-    try {
-        client.commands.get(command).execute(msg, args);
-    } catch (err) {
-        console.log(err);
-        msg.reply('There was an error trying to execute that command.');
-    }
+	msg.channel.startTyping();
+
+	try {
+		client.commands.get(command).execute(msg, args);
+	} catch (err) {
+		console.log(err);
+		msg.reply('There was an error trying to execute that command.');
+	}
+	
+	msg.channel.stopTyping();
 });
