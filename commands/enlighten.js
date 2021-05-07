@@ -18,7 +18,7 @@ module.exports = {
 			text: corpus
 		});
 
-		console.log(customFilter.clean(res.output.slice(0, res.output.indexOf('\n', 50))));
+		console.log(res.output.slice(0, res.output.indexOf('\n', 50)));
 		msg.reply(customFilter.clean(res.output.slice(0, res.output.indexOf('\n', 50))));
 	}
 };
