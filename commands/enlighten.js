@@ -1,4 +1,6 @@
-const fetch = require('node-fetch');
+// CLOSED to avoid billing
+
+/* const fetch = require('node-fetch');
 const deepai = require('deepai');
 const e = require('express');
 const Filter = require('bad-words');
@@ -22,3 +24,4 @@ module.exports = {
 		msg.reply(customFilter.clean(res.output.slice(0, res.output.indexOf('\n', 50))));
 	}
 };
+ */
